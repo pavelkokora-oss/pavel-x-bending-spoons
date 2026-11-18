@@ -270,6 +270,15 @@
   .drive h2 { font-size:clamp(36px,6vw,72px); }
   .cta h2 { font-size:clamp(40px,7vw,96px); letter-spacing:-0.05em; }
   .video-card video { aspect-ratio:1/1; object-fit:cover; }
+  .band.occupation { background:#000; color:#fff; border-top:0; }
+  .band.occupation + .band { border-top:0; }
+  .occupation .kicker { color:#c7ff9f; }
+  .occupation .occ-lead { color:#c7ff9f; }
+  .occupation .occ-sub, .occupation .occ-fact small, .occupation .occ-fact span { color:rgba(255,255,255,.65); }
+  .occupation .occ-fact { border-top-color:rgba(255,255,255,.22); }
+  .occupation .occ-fact:first-child { border-top-color:#c7ff9f; }
+  .occupation .occ-fact b { color:#c7ff9f; }
+  .lockup .logo { height:20px; width:auto; }
 </style>
 </head>
 <body>
@@ -277,12 +286,12 @@
 <section class="hero">
   <div class="wrap">
     <header class="nav">
-      <div class="lockup"><span>Pavel</span><span class="x">×</span><span class="wordmark">Bending Spoons</span></div>
+      <div class="lockup"><span>Pavel</span><span class="x">×</span><img class="logo" src="logos/bending-spoons.svg" alt="Bending Spoons"></div>
       
     </header>
     <div class="hero-grid">
       <div>
-        <div style="margin-top:36px"><span class="pill">Re: Product manager</span></div>
+        <div style="margin-top:36px"><a class="pill" style="text-decoration:none" href="https://jobs.bendingspoons.com/positions/63c548b3521886004f3daec0" target="_blank" rel="noopener">Re: Product manager ↗</a></div>
         <h1>Hi! I&#x27;m Pavel.<br>We need to talk. <strong>Urgently.</strong></h1>
         <p class="hero-sub">Give me 1 minute to convince you!</p>
         <div class="actions">
@@ -358,6 +367,10 @@
             opacity:.35; transform:translateY(10px); transition:opacity .9s .25s, transform .9s .25s; }
   .pz-grid.joined ~ .pz-pic { opacity:1; transform:none; }
   .pz-pic small { display:block; font-family:'Fragment Mono', ui-monospace, monospace; font-size:13px; color:#c7ff9f; margin-bottom:12px; }
+  .pz-pic .pz-with { display:flex; justify-content:center; align-items:center; gap:12px; margin-bottom:18px;
+                     font-family:'Instrument Sans', sans-serif; font-size:24px; font-weight:400; letter-spacing:-0.02em; color:#fff; }
+  .pz-pic .pz-with i { font-style:normal; opacity:.55; font-size:20px; }
+  .pz-pic .pz-with img { height:26px; width:auto; display:block; }
   .pz-pic p { margin:0; font-size:clamp(26px,3.4vw,42px); line-height:1.12; letter-spacing:-0.035em; }
   .pz-pic em { font-family:'Instrument Serif', Georgia, serif; font-style:italic; color:#c7ff9f; letter-spacing:-0.01em; }
   @media (prefers-reduced-motion: reduce) { .pz-grid, .pz-piece, .pz-pic, .pz-piece::before, .pz-piece::after { transition:none; } }
@@ -375,6 +388,8 @@
     .pz-eq { height:40px; margin:18px auto 14px; }
     .pz-pic { max-width:640px; opacity:1; transform:none; padding:28px 24px; border-radius:28px; text-align:left; }
     .pz-pic p { font-size:28px; }
+    .pz-pic .pz-with { justify-content:flex-start; font-size:20px; gap:10px; }
+    .pz-pic .pz-with img { height:21px; }
   }
 </style>
 <section class="band pz" id="match">
@@ -419,7 +434,7 @@
     </div>
     <span class="pz-eq" aria-hidden="true"></span>
     <div class="pz-pic">
-      <small>Together</small>
+      <small class="pz-with"><span>Pavel</span><i>×</i><img src="logos/bending-spoons.svg" alt="Bending Spoons"></small>
       <p>New business model? I get in <em>fast</em>, find the <em>lever</em> and move the <em>number</em>.</p>
     </div>
   </div>
