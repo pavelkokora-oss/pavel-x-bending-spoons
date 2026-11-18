@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pavel × Bending Spoons</title>
+<meta name="description" content="Pavel Kokora for the Product manager role at Bending Spoons">
+<meta property="og:title" content="Pavel × Bending Spoons">
+<meta property="og:description" content="Pavel Kokora for the Product manager role at Bending Spoons">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;family=Fragment+Mono&amp;family=Caveat:wght@700&amp;display=swap" rel="stylesheet">
+<style>
+  /* Brand tokens: filled per company from content.json "brand" (see playbook §2b). */
+  :root {
+    --font-head: 'Instrument Sans', -apple-system, Helvetica, Arial, sans-serif;
+    --font-body: 'Instrument Sans', -apple-system, Helvetica, Arial, sans-serif;
+    --font-note: 'Instrument Serif', Georgia, serif;
+    --font-mono: 'Fragment Mono', ui-monospace, monospace;
+    --page-bg: #ffffff;
+    --hero-bg: #000000;
+    --hero-ink: #ffffff;
+    --hero-muted: rgba(255,255,255,.72);
+    --ink: #000000;
+    --muted: #666666;
+    --line: #e6e6e6;
+    --accent: #000000;
+    --accent-ink: #ffffff;
+    --accent-2: #000000;
+    --btn-radius: 999px;
+    --btn-border: 1px solid transparent;
+    --ghost-bg: rgba(0,0,0,.05);
+    --ghost-ink: #000000;
+    --ghost-border: 1px solid transparent;
+    --hero-ghost-bg: transparent;
+    --hero-ghost-ink: #ffffff;
+    --hero-ghost-border: 1px solid rgba(255,255,255,.45);
+    --pill-bg: transparent;
+    --pill-ink: #c7ff9f;
+    --pill-border: rgba(199,255,159,.45);
+    --card-bg: #f2f2f2;
+    --card-border: 0;
+    --card-radius: 50px;
+    --card-pad: 36px;
+    --card-shadow: none;
+    --head-case: none;
+    --head-weight: 400;
+    --head-tracking: -0.04em;
+    --kicker-case: none;
+    --kicker-tracking: 0;
+    --dark-bg: #000000;
+    --dark-ink: #ffffff;
+    --dark-accent: #c7ff9f;
+    --dark-btn-bg: #ffffff;
+    --dark-btn-ink: #000000;
+    --note-bg: #f2f2f2;
+    --note-ink: #000000;
+    --note-radius: 30px;
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; font-family:var(--font-body); color:var(--ink); line-height:1.55; background:var(--page-bg); }
+  a { color:inherit; }
+  .wrap { max-width:1080px; margin:0 auto; padding:0 24px; }
+  h1, h2, h3, .wordmark, .stat b { font-family:var(--font-head); }
+  h1 { font-weight:var(--head-weight); font-size:clamp(40px,6.6vw,80px); line-height:1.0; letter-spacing:var(--head-tracking);
+       text-transform:var(--head-case); margin:18px 0 16px; }
+  h2 { font-weight:var(--head-weight); font-size:clamp(28px,4.2vw,48px); line-height:1.06; letter-spacing:var(--head-tracking);
+       text-transform:var(--head-case); margin:0 0 16px; }
+  h3 { margin:0 0 6px; font-size:21px; font-weight:var(--head-weight); letter-spacing:calc(var(--head-tracking) / 2); }
+  h3 a { text-decoration:none; }
+
+  /* bands */
+  .band { padding:72px 0; }
+  .band + .band { border-top:1px solid var(--line); }
+  .band.dark, .band.dark + .band, .band.hero + .band { border-top:0; }
+  .hero { background:var(--hero-bg); color:var(--hero-ink); padding:0 0 72px; }
+  .dark { background:var(--dark-bg); color:var(--dark-ink); }
+
+  header.nav { display:flex; justify-content:space-between; align-items:center; padding:24px 0 8px; }
+  .lockup { display:flex; align-items:center; gap:10px; font-family:var(--font-head); font-weight:var(--head-weight); font-size:18px; }
+  .lockup .x { opacity:.55; font-weight:400; }
+  .wordmark { font-weight:500; letter-spacing:-0.03em; font-size:20px; }
+  .logo { height:24px; display:block; }
+  .nav nav a { font-size:14px; font-weight:600; text-decoration:none; margin-left:24px; opacity:.85; }
+
+  .pill { display:inline-block; font-size:12px; font-weight:600; letter-spacing:.03em; padding:7px 12px; border-radius:var(--btn-radius);
+          background:var(--pill-bg); color:var(--pill-ink); border:1px solid var(--pill-border); margin:0 8px 8px 0; }
+  .hero-sub { color:var(--hero-muted); font-size:19px; margin:0 0 14px; }
+  .hero .lead { color:var(--hero-ink); }
+  .lead { font-size:18px; max-width:660px; }
+  .kicker { font-size:13px; font-weight:700; letter-spacing:var(--kicker-tracking); text-transform:var(--kicker-case); color:var(--accent-2); margin:0 0 12px; }
+  .dark .kicker { color:var(--dark-accent); }
+  .meta { font-size:13px; font-weight:600; color:var(--muted); }
+  .small { font-size:14px; color:var(--muted); }
+  .actions { display:flex; gap:14px; align-items:center; margin:26px 0 36px; flex-wrap:wrap; }
+  .link { font-weight:700; text-decoration:underline; text-underline-offset:4px; }
+  .btn { display:inline-block; font-size:15px; font-weight:600; text-decoration:none; padding:13px 22px; border-radius:var(--btn-radius);
+         background:var(--accent); color:var(--accent-ink); border:var(--btn-border); transition:filter .15s; }
+  .btn:hover { filter:brightness(.92); }
+  .btn.ghost { background:var(--ghost-bg); color:var(--ghost-ink); border:var(--ghost-border); }
+  .dark .btn:not(.ghost) { background:var(--dark-btn-bg); color:var(--dark-btn-ink); }
+  .hero .btn.ghost { background:var(--hero-ghost-bg); color:var(--hero-ghost-ink); border:var(--hero-ghost-border); }
+  .dark .btn.ghost { background:transparent; color:var(--dark-ink); border:1px solid color-mix(in srgb, var(--dark-ink) 35%, transparent); }
+
+  .hero-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:44px; align-items:center; }
+  .hero-grid h1 { font-size:clamp(38px,5vw,66px); }
+  .video-slot { aspect-ratio:16/10; border-radius:calc(var(--card-radius) * .6); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
+                background:radial-gradient(circle at 50% 40%, #2a2a33 0%, #0c0c10 75%); color:#cfcfd6; font-size:14px; text-align:center; padding:16px; }
+  .video-slot .play { width:64px; height:64px; border-radius:50%; display:grid; place-items:center; font-size:22px; padding-left:4px;
+                      background:var(--dark-btn-bg); color:var(--dark-btn-ink); box-shadow:0 0 0 10px color-mix(in srgb, var(--dark-btn-bg) 25%, transparent); }
+  .video-wrap { position:relative; }
+  .assistant { background:var(--note-bg); color:var(--note-ink); border-radius:var(--note-radius); padding:12px 16px; box-shadow:0 12px 30px #0000001f;
+               font-size:15px; max-width:400px; margin:0 0 -16px -28px; position:relative; z-index:2; font-family:var(--font-note); }
+  .assistant-top { display:flex; justify-content:space-between; font-weight:700; font-size:12px; margin-bottom:6px; font-family:var(--font-body); opacity:.7; }
+  .video-card { background:var(--dark-bg); color:#fff; border-radius:var(--card-radius); padding:14px; box-shadow:0 24px 60px #00000038; }
+  .video-head { display:flex; align-items:center; gap:10px; margin-bottom:12px; font-size:14px; }
+  .video-head small { color:#aaa; }
+  /* optional RU / EN video switch */
+  .vlang-bar { margin-left:auto; display:flex; gap:4px; padding:3px; border-radius:999px; background:rgba(255,255,255,.12); flex-shrink:0; }
+  .vlang { font:inherit; font-size:12px; font-weight:700; letter-spacing:.04em; border:0; cursor:pointer; padding:5px 10px; border-radius:999px;
+           background:transparent; color:#fff; }
+  .vlang.on { background:var(--accent); color:var(--accent-ink); }
+  .video-card video { object-fit:contain; }
+  .avatar { width:34px; height:34px; flex-shrink:0; object-fit:cover; border-radius:50%; background:var(--dark-btn-bg); color:var(--dark-btn-ink); display:grid; place-items:center; font-weight:800; }
+  .video-card video { width:100%; border-radius:calc(var(--card-radius) * .6); display:block; background:#000; aspect-ratio:16/10; object-fit:cover; }
+  .video-foot { display:flex; justify-content:space-between; font-size:12px; color:#aaa; margin-top:10px; }
+  .tag { font-size:11px; font-weight:700; letter-spacing:.06em; padding:3px 8px; border-radius:6px; background:#ffffff1f; }
+
+  /* core block: their task -> what I did -> what it gives them */
+  .match-list { display:grid; gap:14px; margin-top:28px; }
+  .match-row { display:grid; grid-template-columns:1fr 1.25fr 1fr; background:var(--card-bg); border:var(--card-border);
+               border-radius:var(--card-radius); box-shadow:var(--card-shadow); overflow:hidden; }
+  .match-row > div { padding:var(--card-pad); }
+  .match-row > div + div { border-left:1px solid var(--line); }
+  .match-row .lbl { display:block; font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  .match-row .need { font-family:var(--font-head); font-weight:var(--head-weight); font-size:20px; line-height:1.2; letter-spacing:calc(var(--head-tracking) / 2); }
+  .match-row .did { font-size:16px; }
+  .match-row .did b { display:block; font-family:var(--font-head); font-size:26px; line-height:1.1; letter-spacing:var(--head-tracking); color:var(--accent-2); margin-bottom:4px; }
+  .match-row .get { font-weight:600; }
+
+  /* optional "two halves" block */
+  .half-grid { display:grid; grid-template-columns:repeat(var(--cols, 2), 1fr); gap:18px; margin-top:28px; }
+  .half { background:var(--card-bg); border:var(--card-border); border-radius:var(--card-radius); box-shadow:var(--card-shadow); padding:var(--card-pad); }
+  .half-tag { display:inline-block; font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+  .half h3 { font-size:26px; }
+  .half-link { color:inherit; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:4px; }
+  .half-link:hover { opacity:.8; }
+  .half-logo { display:block; height:32px; width:auto; margin:0 0 14px; }
+  .half-role { margin:0 0 16px; font-weight:600; color:var(--muted); }
+  .half-num b { display:block; font-family:var(--font-head); font-weight:var(--head-weight); font-size:34px; line-height:1.05; letter-spacing:var(--head-tracking); color:var(--accent-2); }
+  .half-num span { font-size:14px; color:var(--muted); }
+  .half ul { margin:16px 0 0; padding-left:18px; }
+  .half li { margin:6px 0; }
+  .half-arrows { display:block; width:100%; height:110px; margin:6px 0 4px; overflow:visible; }
+  .half-arrows path, .half-arrows-mobile path { fill:none; stroke:var(--ink); stroke-width:2.5; stroke-linecap:round; stroke-dasharray:0.1 9; vector-effect:non-scaling-stroke; }
+  .half-arrows-mobile { display:none; width:20px; height:60px; margin:6px auto 4px; }
+  .half-join.target { width:min(100%, 720px); margin-left:auto; margin-right:auto; }
+  .half-join.target { margin-top:0; text-align:center; }
+  .half-join.target h3 { font-size:30px; margin:0 0 8px; }
+  .half-join.target p { margin:0 auto; max-width:640px; }
+  .half-join { margin-top:18px; padding:20px var(--card-pad); border:var(--card-border); border-radius:var(--card-radius); font-size:18px; }
+
+  /* optional "superpower" funnel: bars narrow from top to bottom, colour deepens */
+  .funnel { display:flex; flex-direction:column; align-items:center; gap:8px; margin-top:32px; }
+  .funnel-step { width:calc(100% - var(--i) * (36% / var(--n))); display:grid; grid-template-columns:minmax(150px, 34%) 1fr; gap:6px 18px; align-items:center;
+                 padding:16px 22px; border-radius:var(--card-radius); color:var(--ink);
+                 background:color-mix(in srgb, var(--accent-2) calc(14% + var(--i) * (86% / var(--n))), var(--page-bg)); }
+  .funnel-step.deep { color:#fff; }
+  .funnel-step.solo { grid-template-columns:1fr; text-align:center; }
+  .funnel-step b { font-family:var(--font-head); font-weight:var(--head-weight); font-size:19px; line-height:1.2; }
+  .funnel-step span { font-size:15px; line-height:1.4; }
+  .funnel-plus { margin:18px auto 0; width:fit-content; max-width:100%; display:flex; flex-wrap:wrap; gap:6px 14px; align-items:baseline;
+                 padding:14px 22px; border-radius:var(--card-radius); background:var(--card-bg); border:var(--card-border); box-shadow:var(--card-shadow); }
+  .funnel-plus b { font-family:var(--font-head); font-weight:var(--head-weight); font-size:19px; }
+  .funnel-plus span { font-size:15px; }
+  .funnel-note { margin:26px auto 0; max-width:720px; text-align:center; font-family:var(--font-head); font-weight:var(--head-weight); font-size:22px; line-height:1.3; }
+
+  /* optional "My path" timeline */
+  .path .wrap { max-width:860px; }
+  .path-list { margin-top:28px; border-bottom:1px solid var(--line); }
+  .path-row { display:grid; grid-template-columns:150px 1fr; gap:16px; padding:16px 0; border-top:1px solid var(--line); }
+  .path-years { font-weight:700; color:var(--muted); }
+  .path-row.hl { font-weight:700; color:var(--ink); }
+  .path-row.hl .path-years { color:var(--ink); }
+  .path-callout { margin-top:28px; padding:22px var(--card-pad); background:var(--note-bg); color:var(--note-ink); border:var(--card-border);
+                  border-radius:var(--card-radius); font-family:var(--font-head); font-weight:var(--head-weight); font-size:22px; line-height:1.3; }
+  .path-foot { display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; margin-top:28px; }
+
+  .track { display:flex; flex-wrap:wrap; gap:14px 28px; align-items:baseline; }
+  .track .fact b { display:block; font-family:var(--font-head); font-weight:var(--head-weight); font-size:30px; letter-spacing:var(--head-tracking); }
+  .track .fact span { font-size:14px; color:var(--muted); }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; margin:22px 0 26px; }
+  .chip { font-size:14px; font-weight:600; padding:6px 12px; border-radius:var(--btn-radius); border:1px solid var(--line); }
+  .snap-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; }
+  figure { margin:0; background:var(--card-bg); border:var(--card-border); border-radius:var(--card-radius); overflow:hidden; }
+  figure img, figure video { width:100%; aspect-ratio:16/10; object-fit:cover; display:block; background:#ddd; }
+  figcaption { font-size:14px; padding:12px 16px; color:var(--muted); }
+
+  .drive .wrap { position:relative; }
+  .drive h2 { max-width:820px; }
+  .doodle { position:absolute; top:-28px; right:24px; font-family:'Caveat', 'Comic Sans MS', cursive; font-weight:700; font-size:52px;
+            line-height:1; color:var(--dark-accent); transform:rotate(-8deg); white-space:nowrap; }
+  .drive .lead { font-size:20px; max-width:720px; margin:0; opacity:.9; }
+  .cta h2 { max-width:820px; }
+  footer { font-size:13px; color:var(--muted); padding:24px 0 40px; }
+  footer p { margin:4px 0; }
+
+  @media (max-width:760px) {
+    .hero-grid { grid-template-columns:1fr; }
+    .nav nav { display:none; }
+    .assistant { margin-left:0; }
+    .match-row { grid-template-columns:1fr; }
+    .half-grid { grid-template-columns:1fr; }
+    .path-row { grid-template-columns:1fr; gap:2px; }
+    .funnel-step { width:calc(100% - var(--i) * (14% / var(--n))); grid-template-columns:1fr; padding:14px 18px; }
+    .half-arrows { display:none; }
+    .half-arrows-mobile { display:block; }
+    .match-row > div + div { border-left:0; border-top:1px solid var(--line); }
+    .band { padding:48px 0; }
+    .doodle { position:static; display:block; width:max-content; margin:0 0 14px auto; font-size:40px; }
+  }
+  /* optional "My last occupation" block: numbered stats with a top rule, first one highlighted */
+  .occ-role { font-size:clamp(22px,2.6vw,32px); margin:18px 0 6px; }
+  .occ-role a { color:inherit; text-decoration-thickness:2px; text-underline-offset:5px; }
+  .occ-sub { color:var(--muted); margin:0; }
+  .occ-facts { display:grid; grid-template-columns:repeat(3, 1fr); gap:28px; margin-top:34px; }
+  .occ-fact { border-top:2px solid var(--line); padding-top:16px; }
+  .occ-fact:first-child { border-top-color:var(--accent-2); }
+  .occ-fact small { display:block; font-size:13px; font-weight:600; color:var(--muted); margin-bottom:8px; }
+  .occ-fact b { display:block; font-family:var(--font-head); font-weight:var(--head-weight); font-size:clamp(40px,5vw,64px); line-height:1; letter-spacing:var(--head-tracking); }
+  .occ-fact span { display:block; margin-top:8px; color:var(--muted); }
+  .occ-note { margin:34px 0 0; font-family:var(--font-head); font-weight:var(--head-weight); font-size:clamp(20px,2.2vw,26px); }
+  @media (max-width:760px) { .occ-facts { grid-template-columns:1fr; gap:22px; } }
+  /* optional checklist block: posting requirement + tick + one line of proof */
+  .check-list { display:grid; gap:12px; margin-top:28px; }
+  .check-row { display:grid; grid-template-columns:44px 1fr; gap:16px; align-items:start; padding:18px 22px;
+               background:var(--card-bg); border:var(--card-border); border-radius:var(--card-radius); }
+  .check-tick { width:36px; height:36px; border-radius:50%; display:grid; place-items:center; line-height:0;
+                background:var(--accent); color:var(--accent-ink); }
+  .check-row b { display:block; font-family:var(--font-head); font-weight:var(--head-weight); font-size:19px; line-height:1.3; }
+  .check-row > div > span { display:block; margin-top:4px; color:var(--muted); }
+  .check-tick svg { width:22px; height:22px; display:block; }
+  .half-sub { font-size:clamp(18px,2vw,22px); color:var(--muted); margin:12px 0 0; max-width:820px; }
+  /* optional sticker over the video preview */
+  .video-frame { position:relative; }
+  .video-badge { position:absolute; top:14px; left:14px; padding:7px 14px; border-radius:999px; font-weight:700; font-size:15px;
+                 background:var(--accent); color:var(--accent-ink); box-shadow:0 6px 20px rgba(0,0,0,.3); pointer-events:none; transform:rotate(-3deg); }
+  h1 strong, h2 strong { font-family:'Instrument Serif', Georgia, serif; font-style:italic; font-weight:400; letter-spacing:-0.01em; }
+  .hero h1 strong, .dark h2 strong { color:#c7ff9f; }
+  .hero h1 { letter-spacing:-0.06em; }
+  .hero .btn:not(.ghost) { background:#fff; color:#000; }
+  .btn { font-weight:600; }
+  .kicker { font-family:'Fragment Mono', ui-monospace, monospace; font-weight:400; font-size:13px; color:#666; }
+  .dark .kicker { font-family:'Fragment Mono', ui-monospace, monospace; }
+  .video-card { border:1px solid #2a2a2a; border-radius:36px; }
+  .half:nth-child(1) { background:#ffe3e3; } .half:nth-child(2) { background:#d3efab; } .half:nth-child(3) { background:#72e5ff; }
+  .half-tag, .half-role, .half-num span { color:rgba(0,0,0,.62); }
+  .half-num b { font-family:'Instrument Serif', Georgia, serif; font-size:52px; letter-spacing:-0.02em; }
+  .half h3 { font-size:30px; letter-spacing:-0.03em; }
+  .half-join.target { background:#000; color:#fff; border:0; padding:34px 36px; width:min(100%, 920px); }
+  .half-join.target .half-tag { color:#c7ff9f; }
+  .half-join.target h3 { font-size:clamp(22px,3vw,32px); }
+  .half-join.target p { color:rgba(255,255,255,.78); }
+  .half-arrows path, .half-arrows-mobile path { stroke:#000; }
+  .occ-fact b { font-family:'Instrument Serif', Georgia, serif; font-size:clamp(52px,6.5vw,84px); letter-spacing:-0.02em; }
+  .occ-fact:first-child { border-top-color:#000; }
+  .occ-lead { font-family:'Instrument Serif', Georgia, serif; font-style:italic; }
+  .path-callout { border:0; font-size:24px; }
+  .drive h2 { font-size:clamp(36px,6vw,72px); }
+  .cta h2 { font-size:clamp(40px,7vw,96px); letter-spacing:-0.05em; }
+  .video-card video { aspect-ratio:1/1; object-fit:cover; }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap">
+    <header class="nav">
+      <div class="lockup"><span>Pavel</span><span class="x">×</span><span class="wordmark">Bending Spoons</span></div>
+      <nav><a href="#match">How I help</a><a href="#contact">Contact</a></nav>
+    </header>
+    <div class="hero-grid">
+      <div>
+        <div style="margin-top:36px"><span class="pill">Re: Product manager</span><span class="pill">I&#x27;m based in Barcelona</span><span class="pill">Happy to start in Milan</span></div>
+        <h1>Hi! I&#x27;m Pavel.<br>We need to talk. <strong>Urgently.</strong></h1>
+        <p class="hero-sub">Give me 1 minute to convince you!</p>
+        <div class="actions">
+          <a class="btn" href="#match">Why we need to talk? ↓</a>
+          <a class="btn ghost" href="https://snazzy-axolotl-240e64.netlify.app/Pavel_Kokora_CV.pdf" target="_blank" rel="noopener">My CV (PDF)</a>
+        </div>
+      </div>
+      
+      <div class="video-wrap">
+        <div class="video-card">
+          <div class="video-head"><span class="avatar">P</span><div><b>Pavel</b><br><small>Candidate · Product manager</small></div></div>
+          <video controls playsinline preload="metadata" src="bending-spoons.mp4" poster="bending-spoons-poster.jpg"></video>
+          <div class="video-foot"><span>Video for Bending Spoons</span><span class="vdur">1:04</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Puzzle block (Pavel, 18.11.2026). Inserted after the hero by build_local.py.
+     Desktop: 4 jigsaw pieces, slightly apart, that click closer when scrolled into view.
+     Mobile (<=760px): the classic card structure, no puzzle shapes. -->
+<style>
+  .pz { padding:88px 0 96px; background:#fff; }
+  .pz .kicker { margin-bottom:12px; }
+  .pz h2 { margin-bottom:44px; }
+  .pz-grid { --g:34px; --k:58px; display:grid; grid-template-columns:1fr 1fr; gap:var(--g); max-width:980px; margin:0 auto;
+             transition:gap .9s cubic-bezier(.2,.8,.2,1); }
+  .pz-grid.joined { --g:14px; }
+  .pz-piece { position:relative; border-radius:36px; padding:44px 48px 46px; min-height:300px; color:#000;
+              transition:transform .9s cubic-bezier(.2,.8,.2,1); }
+  .pz-piece h3 { font-size:clamp(26px,2.6vw,34px); line-height:1.08; letter-spacing:-0.03em; margin:0 0 18px; font-weight:400; }
+  .pz-piece h3 em { font-family:'Instrument Serif', Georgia, serif; font-style:italic; letter-spacing:-0.01em; }
+  .pz-num { display:block; font-family:'Fragment Mono', ui-monospace, monospace; font-size:13px; opacity:.6; margin-bottom:16px; }
+  .pz-chips { display:flex; flex-wrap:wrap; gap:8px; }
+  .pz-chips span { font-size:14px; font-weight:600; padding:7px 13px; border-radius:999px; background:rgba(255,255,255,.62); }
+  .pz-list { list-style:none; margin:0; padding:0; display:grid; gap:12px; }
+  .pz-list li { font-size:16px; line-height:1.35; }
+  .pz-list b { font-family:'Instrument Serif', Georgia, serif; font-weight:400; font-size:26px; letter-spacing:-0.01em; display:block; line-height:1.05; }
+  .pz-sub { margin:16px 0 0; font-size:15px; opacity:.72; }
+  /* results piece: company (model) · role, then the result lines */
+  .pz-list.res { gap:0; }
+  .pz-list.res li { padding:14px 0; border-top:1px solid rgba(0,0,0,.16); }
+  .pz-list.res li:first-child { border-top:0; padding-top:0; }
+  .pz-list.res li:last-child { padding-bottom:0; }
+  .pz-co { font-size:19px; font-weight:600; letter-spacing:-0.01em; }
+  .pz-meta { font-size:14px; font-weight:500; opacity:.68; }
+  .pz-res { display:block; margin-top:6px; font-size:16px; line-height:1.35; }
+  .pz-res strong { font-weight:700; white-space:nowrap; }
+  .pz-c h3 em, .pz-c .pz-res strong { color:#c7ff9f; }
+  .pz-c .pz-list.res li { border-top-color:rgba(255,255,255,.2); }
+  .pz-c .pz-num { opacity:.55; }
+  .pz-a { background:#ffe3e3; transform:translate(-10px,-8px) rotate(-1.6deg); z-index:2; }
+  .pz-b { background:#d3efab; transform:translate(10px,-4px) rotate(1.2deg); z-index:1; }
+  .pz-c { background:#000; color:#fff; transform:translate(-6px,10px) rotate(1deg); z-index:2; }
+  .pz-d { background:#72e5ff; transform:translate(12px,8px) rotate(-1.3deg); z-index:1; }
+  .pz-grid.joined .pz-piece { transform:none; }
+  /* knobs (tabs) and sockets (blanks): knob = circle in own colour, socket = circle in the page colour */
+  .pz-piece::before, .pz-piece::after { content:""; position:absolute; width:var(--k); height:var(--k); border-radius:50%; }
+  .pz-a::after  { background:#ffe3e3; right:calc(var(--k) / -2 - var(--g) / 2 + 2px); top:calc(50% - var(--k) / 2); z-index:3; transition:right .9s; }
+  .pz-a::before { background:#ffe3e3; bottom:calc(var(--k) / -2 - var(--g) / 2 + 2px); left:calc(50% - var(--k) / 2); z-index:3; transition:bottom .9s; }
+  .pz-b::before { background:#fff; left:calc(var(--k) / -2 + var(--g) / 2 - 2px); top:calc(50% - var(--k) / 2); z-index:2; transition:left .9s; }
+  .pz-b::after  { background:#d3efab; bottom:calc(var(--k) / -2 - var(--g) / 2 + 2px); left:calc(50% - var(--k) / 2); z-index:3; transition:bottom .9s; }
+  .pz-c::before { background:#fff; top:calc(var(--k) / -2 + var(--g) / 2 - 2px); left:calc(50% - var(--k) / 2); z-index:2; transition:top .9s; }
+  .pz-c::after  { background:#000; right:calc(var(--k) / -2 - var(--g) / 2 + 2px); top:calc(50% - var(--k) / 2); z-index:3; transition:right .9s; }
+  .pz-d::before { background:#fff; top:calc(var(--k) / -2 + var(--g) / 2 - 2px); left:calc(50% - var(--k) / 2); z-index:2; transition:top .9s; }
+  .pz-d::after  { background:#fff; left:calc(var(--k) / -2 + var(--g) / 2 - 2px); top:calc(50% - var(--k) / 2); z-index:2; transition:left .9s; }
+  /* a piece with a knob must sit above the neighbour the knob goes into */
+  .pz-a { z-index:4; } .pz-b { z-index:3; } .pz-c { z-index:3; } .pz-d { z-index:1; }
+  .pz-eq { display:block; width:2px; height:56px; margin:26px auto 22px; background:repeating-linear-gradient(#000 0 3px, transparent 3px 11px); }
+  .pz-pic { max-width:980px; margin:0 auto; background:#000; color:#fff; border-radius:36px; padding:38px 44px; text-align:center;
+            opacity:.35; transform:translateY(10px); transition:opacity .9s .25s, transform .9s .25s; }
+  .pz-grid.joined ~ .pz-pic { opacity:1; transform:none; }
+  .pz-pic small { display:block; font-family:'Fragment Mono', ui-monospace, monospace; font-size:13px; color:#c7ff9f; margin-bottom:12px; }
+  .pz-pic p { margin:0; font-size:clamp(26px,3.4vw,42px); line-height:1.12; letter-spacing:-0.035em; }
+  .pz-pic em { font-family:'Instrument Serif', Georgia, serif; font-style:italic; color:#c7ff9f; letter-spacing:-0.01em; }
+  @media (prefers-reduced-motion: reduce) { .pz-grid, .pz-piece, .pz-pic, .pz-piece::before, .pz-piece::after { transition:none; } }
+  /* mobile, narrow windows and touch phones: classic stacked cards, no puzzle */
+  @media (max-width:900px), (hover:none) and (pointer:coarse) {
+    .pz { padding:56px 0 60px; }
+    .pz h2 { margin-bottom:24px; }
+    .pz-grid, .pz-grid.joined { grid-template-columns:1fr; gap:14px; max-width:640px; }
+    .pz-piece { transform:none !important; min-height:0; padding:28px 24px 30px; border-radius:28px; }
+    .pz-piece::before, .pz-piece::after { display:none; }
+    .pz-piece h3 { font-size:28px; margin-bottom:16px; }
+    .pz-co { display:block; font-size:20px; }
+    .pz-meta { display:block; margin-top:2px; font-size:14px; }
+    .pz-res { font-size:16px; }
+    .pz-eq { height:40px; margin:18px auto 14px; }
+    .pz-pic { max-width:640px; opacity:1; transform:none; padding:28px 24px; border-radius:28px; text-align:left; }
+    .pz-pic p { font-size:28px; }
+  }
+</style>
+<section class="band pz" id="puzzle">
+  <div class="wrap">
+    <p class="kicker">How I get into a new business</p>
+    <h2>Four pieces. <strong>One picture.</strong></h2>
+    <div class="pz-grid" id="pz-grid">
+      <div class="pz-piece pz-a">
+        <span class="pz-num">01</span>
+        <h3>A <em>bunch</em> of business models</h3>
+        <div class="pz-chips"><span>B2C</span><span>B2B</span><span>EdTech</span><span>FinTech</span><span>E-commerce</span><span>AI consumer app</span><span>B2B SaaS</span><span>Digital agency</span></div>
+      </div>
+      <div class="pz-piece pz-b">
+        <span class="pz-num">02</span>
+        <h3>Every side of a <em>business</em></h3>
+        <div class="pz-chips"><span>Marketing</span><span>Product</span><span>Sales</span><span>Management</span></div>
+        <p class="pz-sub">From running ads myself to leading a unit of 200+ people.</p>
+      </div>
+      <div class="pz-piece pz-c">
+        <span class="pz-num">03</span>
+        <h3>Results, not <em>slides</em></h3>
+        <ul class="pz-list res">
+          <li><span class="pz-co">Algonova</span> <span class="pz-meta">(B2C EdTech) · Product Manager → Head of Business Unit</span>
+            <span class="pz-res">First sale became profitable: payback <strong>0.8 → 1.1</strong></span>
+            <span class="pz-res">Monthly revenue <strong>$40K → $200K</strong></span></li>
+          <li><span class="pz-co">Praktika.ai</span> <span class="pz-meta">(AI B2C EdTech) · Employee #1, Product Manager</span>
+            <span class="pz-res">Praktika today: <strong>$55M ARR</strong></span></li>
+          <li><span class="pz-co">Takomo</span> <span class="pz-meta">(FinTech, Vietnam) · Head of Product</span>
+            <span class="pz-res">Positive EBITDA in 11 months: <strong>+$200K a month</strong></span></li>
+        </ul>
+      </div>
+      <div class="pz-piece pz-d">
+        <span class="pz-num">04</span>
+        <h3>Founder, <em>twice</em></h3>
+        <ul class="pz-list res">
+          <li><span class="pz-co">Marketing agency</span> <span class="pz-meta">(Digital agency) · Founder &amp; CEO</span>
+            <span class="pz-res">Year one: <strong>$40K+</strong> revenue, <strong>50%+</strong> margin</span></li>
+          <li><span class="pz-co">GaleAI</span> <span class="pz-meta">(AI B2B SaaS) · Co-founder &amp; CEO</span>
+            <span class="pz-res"><strong>$12K+</strong> revenue in the first 4 months</span></li>
+        </ul>
+      </div>
+    </div>
+    <span class="pz-eq" aria-hidden="true"></span>
+    <div class="pz-pic">
+      <small>Together</small>
+      <p>New business model? I get in <em>fast</em>, find the <em>lever</em> and move the <em>number</em>.</p>
+    </div>
+  </div>
+</section>
+<script>
+  (function () {
+    var g = document.getElementById('pz-grid');
+    if (!g) return;
+    if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) { g.classList.add('joined'); return; }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { setTimeout(function () { g.classList.add('joined'); }, 250); io.disconnect(); } });
+    }, { threshold: 0.45 });
+    io.observe(g);
+  })();
+</script>
+
+<section class="band halves" id="match">
+  <div class="wrap">
+    <p class="kicker">How what I&#x27;ve done helps Bending Spoons</p>
+    <h2>Business model first.<br>Then I ship it with the team.</h2>
+    <div class="half-grid" style="--cols:3">
+      <div class="half">
+        <span class="half-tag">AI app · Investigate → Innovate</span>
+        <h3>Praktika.ai</h3>
+        <p class="half-role">First employee, Product Manager · 2021–2023</p><div class="half-num"><b>4 months</b><span>idea → App Store and Google Play</span></div>
+        <ul><li>Started with 50+ user interviews, before any code.</li><li>Added the OpenAI API: free trial → paid 1.5x+. Praktika today: $55M ARR.</li></ul>
+      </div>
+      <div class="half">
+        <span class="half-tag">FinTech app · Execute</span>
+        <h3>Takomo</h3>
+        <p class="half-role">Head of Product · 2023–2024</p><div class="half-num"><b>5 months</b><span>to a new mobile app, team of 15</span></div>
+        <ul><li>Owned it end to end: designer, analyst, engineers, QA.</li><li>Day-1/7/30 retention up 15%+. The app drove positive EBITDA.</li></ul>
+      </div>
+      <div class="half">
+        <span class="half-tag">EdTech · Data → Iterate</span>
+        <h3>Algonova</h3>
+        <p class="half-role">Product Manager → Head of Business Unit · 2025–2026</p><div class="half-num"><b>0.8 → 1.1</b><span>the first sale became profitable</span></div>
+        <ul><li>Lead → trial class attendance 13% → 23.5%.</li><li>Diagnosed a ~$17K drop in one week and found both causes.</li></ul>
+      </div>
+    </div>
+    <svg class="half-arrows" viewBox="0 0 1000 150" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M167,4 C167,90 500,60 500,140"/><path d="M500,4 C500,90 500,60 500,140"/><path d="M833,4 C833,90 500,60 500,140"/>
+    </svg>
+    <svg class="half-arrows-mobile" viewBox="0 0 20 60" aria-hidden="true"><path d="M10,2 L10,56"/></svg>
+    <div class="half-join target"><span class="half-tag">Bending Spoons · Product manager</span><h3>Investigate → Innovate → Execute → Iterate</h3><p>I&#x27;ve run this loop on an AI app, a fintech app and a sales funnel. That&#x27;s why I can do it with you.</p></div>
+  </div>
+</section>
+<section class="band dark drive">
+  <div class="wrap">
+    <span class="doodle" aria-hidden="true">1 + 1 = 11</span><p class="kicker">What drives me</p>
+    <h2>The <strong>synergy</strong> of AI and humans.</h2>
+    <p class="lead">In AI since 2021. Now AI agents are a big part of how I work, and I build my own tools with Claude Code. Honestly, nothing drives me more.</p>
+  </div>
+</section>
+
+<section class="band occupation">
+  <div class="wrap">
+    <p class="kicker occ-kicker">My last occupation</p>
+    <h2><span class="occ-lead">Not only products.</span><br>I also run a business at scale.</h2>
+    <h3 class="occ-role">Head of the LatAm business unit at Algonova</h3><p class="occ-sub">EdTech, kids&#x27; coding · 5 countries.</p>
+    <div class="occ-facts"><div class="occ-fact"><small>01</small><b>~$2M</b><span>yearly P&amp;L I owned</span></div><div class="occ-fact"><small>02</small><b>200+</b><span>people in the unit</span></div></div><p class="occ-note">I know how to run a business, not just a product.</p>
+  </div>
+</section>
+<section class="band path" id="path">
+  <div class="wrap">
+    <h2>My path</h2>
+    <div class="path-list"><div class="path-row"><span class="path-years">2017–2020</span><span>Digital marketing manager, SMM manager.</span></div><div class="path-row"><span class="path-years">2021</span><span>Founder of a digital marketing agency.</span></div><div class="path-row hl"><span class="path-years">2021–2023</span><span>Praktika.ai: first employee, product manager.</span></div><div class="path-row hl"><span class="path-years">2023–2024</span><span>Eqvanta Group: Head of Product in a Vietnam subsidiary company.</span></div><div class="path-row"><span class="path-years">2024–2025</span><span>GaleAI: Co-founder &amp; CEO. AI B2B SaaS.</span></div><div class="path-row hl"><span class="path-years">2025–2026</span><span>Algonova: product manager → LATAM business unit leader.</span></div></div><div class="path-callout">I&#x27;ve touched every part of a business: product, marketing, sales, pitching, ops, P&amp;L.</div>
+    <div class="path-foot"><span class="small">The full story, with numbers for every role.</span>
+      <a class="btn" href="https://snazzy-axolotl-240e64.netlify.app/Pavel_Kokora_CV.pdf" target="_blank" rel="noopener">↓ Download my CV (PDF)</a></div>
+  </div>
+</section>
+
+<section class="band dark cta" id="contact">
+  <div class="wrap">
+    <h2>So… shall we <strong>talk</strong>?</h2>
+    <div class="actions">
+      <a class="btn ghost" href="mailto:pavel.kokora@gmail.com">Email me</a>
+      <a class="btn ghost" href="https://t.me/pavelkokora" target="_blank" rel="noopener">Telegram</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/pavel-kokora/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="https://snazzy-axolotl-240e64.netlify.app/Pavel_Kokora_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+    </div>
+  </div>
+</section>
+<footer class="wrap">
+  <p>Pavel Kokora · Barcelona · pavel.kokora@gmail.com</p>
+  <p>A personal application page made by Pavel for the Product manager role. Styled after Bending Spoons's public website; not made, affiliated with or endorsed by Bending Spoons.</p>
+</footer>
+</body>
+</html>
