@@ -278,11 +278,11 @@
   <div class="wrap">
     <header class="nav">
       <div class="lockup"><span>Pavel</span><span class="x">×</span><span class="wordmark">Bending Spoons</span></div>
-      <nav><a href="#match">How I help</a><a href="#contact">Contact</a></nav>
+      
     </header>
     <div class="hero-grid">
       <div>
-        <div style="margin-top:36px"><span class="pill">Re: Product manager</span><span class="pill">I&#x27;m based in Barcelona</span><span class="pill">Happy to start in Milan</span></div>
+        <div style="margin-top:36px"><span class="pill">Re: Product manager</span></div>
         <h1>Hi! I&#x27;m Pavel.<br>We need to talk. <strong>Urgently.</strong></h1>
         <p class="hero-sub">Give me 1 minute to convince you!</p>
         <div class="actions">
@@ -301,7 +301,6 @@
     </div>
   </div>
 </section>
-
 <!-- Puzzle block (Pavel, 18.11.2026). Inserted after the hero by build_local.py.
      Desktop: 4 jigsaw pieces, slightly apart, that click closer when scrolled into view.
      Mobile (<=760px): the classic card structure, no puzzle shapes. -->
@@ -330,6 +329,8 @@
   .pz-list.res li:last-child { padding-bottom:0; }
   .pz-co { font-size:19px; font-weight:600; letter-spacing:-0.01em; }
   .pz-meta { font-size:14px; font-weight:500; opacity:.68; }
+  .pz-link { color:inherit; text-decoration:underline; text-decoration-thickness:1.5px; text-underline-offset:4px; }
+  .pz-link:hover { opacity:.75; }
   .pz-res { display:block; margin-top:6px; font-size:16px; line-height:1.35; }
   .pz-res strong { font-weight:700; white-space:nowrap; }
   .pz-c h3 em, .pz-c .pz-res strong { color:#c7ff9f; }
@@ -376,10 +377,10 @@
     .pz-pic p { font-size:28px; }
   }
 </style>
-<section class="band pz" id="puzzle">
+<section class="band pz" id="match">
   <div class="wrap">
     <p class="kicker">How I get into a new business</p>
-    <h2>Four pieces. <strong>One picture.</strong></h2>
+    <h2>Four pieces of experience. <strong>One picture.</strong></h2>
     <div class="pz-grid" id="pz-grid">
       <div class="pz-piece pz-a">
         <span class="pz-num">01</span>
@@ -396,10 +397,10 @@
         <span class="pz-num">03</span>
         <h3>Results, not <em>slides</em></h3>
         <ul class="pz-list res">
-          <li><span class="pz-co">Algonova</span> <span class="pz-meta">(B2C EdTech) · Product Manager → Head of Business Unit</span>
+          <li><span class="pz-co"><a class="pz-link" href="https://algonova.com/" target="_blank" rel="noopener">Algonova ↗</a></span> <span class="pz-meta">(B2C EdTech) · Product Manager → Head of Business Unit</span>
             <span class="pz-res">First sale became profitable: payback <strong>0.8 → 1.1</strong></span>
             <span class="pz-res">Monthly revenue <strong>$40K → $200K</strong></span></li>
-          <li><span class="pz-co">Praktika.ai</span> <span class="pz-meta">(AI B2C EdTech) · Employee #1, Product Manager</span>
+          <li><span class="pz-co"><a class="pz-link" href="https://praktika.ai/" target="_blank" rel="noopener">Praktika.ai ↗</a></span> <span class="pz-meta">(AI B2C EdTech) · Employee #1, Product Manager</span>
             <span class="pz-res">Praktika today: <strong>$55M ARR</strong></span></li>
           <li><span class="pz-co">Takomo</span> <span class="pz-meta">(FinTech, Vietnam) · Head of Product</span>
             <span class="pz-res">Positive EBITDA in 11 months: <strong>+$200K a month</strong></span></li>
@@ -411,7 +412,7 @@
         <ul class="pz-list res">
           <li><span class="pz-co">Marketing agency</span> <span class="pz-meta">(Digital agency) · Founder &amp; CEO</span>
             <span class="pz-res">Year one: <strong>$40K+</strong> revenue, <strong>50%+</strong> margin</span></li>
-          <li><span class="pz-co">GaleAI</span> <span class="pz-meta">(AI B2B SaaS) · Co-founder &amp; CEO</span>
+          <li><span class="pz-co"><a class="pz-link" href="https://galeai-app.github.io/" target="_blank" rel="noopener">GaleAI ↗</a></span> <span class="pz-meta">(AI B2B SaaS) · Co-founder &amp; CEO</span>
             <span class="pz-res"><strong>$12K+</strong> revenue in the first 4 months</span></li>
         </ul>
       </div>
@@ -435,50 +436,13 @@
   })();
 </script>
 
-<section class="band halves" id="match">
-  <div class="wrap">
-    <p class="kicker">How what I&#x27;ve done helps Bending Spoons</p>
-    <h2>Business model first.<br>Then I ship it with the team.</h2>
-    <div class="half-grid" style="--cols:3">
-      <div class="half">
-        <span class="half-tag">AI app · Investigate → Innovate</span>
-        <h3>Praktika.ai</h3>
-        <p class="half-role">First employee, Product Manager · 2021–2023</p><div class="half-num"><b>4 months</b><span>idea → App Store and Google Play</span></div>
-        <ul><li>Started with 50+ user interviews, before any code.</li><li>Added the OpenAI API: free trial → paid 1.5x+. Praktika today: $55M ARR.</li></ul>
-      </div>
-      <div class="half">
-        <span class="half-tag">FinTech app · Execute</span>
-        <h3>Takomo</h3>
-        <p class="half-role">Head of Product · 2023–2024</p><div class="half-num"><b>5 months</b><span>to a new mobile app, team of 15</span></div>
-        <ul><li>Owned it end to end: designer, analyst, engineers, QA.</li><li>Day-1/7/30 retention up 15%+. The app drove positive EBITDA.</li></ul>
-      </div>
-      <div class="half">
-        <span class="half-tag">EdTech · Data → Iterate</span>
-        <h3>Algonova</h3>
-        <p class="half-role">Product Manager → Head of Business Unit · 2025–2026</p><div class="half-num"><b>0.8 → 1.1</b><span>the first sale became profitable</span></div>
-        <ul><li>Lead → trial class attendance 13% → 23.5%.</li><li>Diagnosed a ~$17K drop in one week and found both causes.</li></ul>
-      </div>
-    </div>
-    <svg class="half-arrows" viewBox="0 0 1000 150" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M167,4 C167,90 500,60 500,140"/><path d="M500,4 C500,90 500,60 500,140"/><path d="M833,4 C833,90 500,60 500,140"/>
-    </svg>
-    <svg class="half-arrows-mobile" viewBox="0 0 20 60" aria-hidden="true"><path d="M10,2 L10,56"/></svg>
-    <div class="half-join target"><span class="half-tag">Bending Spoons · Product manager</span><h3>Investigate → Innovate → Execute → Iterate</h3><p>I&#x27;ve run this loop on an AI app, a fintech app and a sales funnel. That&#x27;s why I can do it with you.</p></div>
-  </div>
-</section>
-<section class="band dark drive">
-  <div class="wrap">
-    <span class="doodle" aria-hidden="true">1 + 1 = 11</span><p class="kicker">What drives me</p>
-    <h2>The <strong>synergy</strong> of AI and humans.</h2>
-    <p class="lead">In AI since 2021. Now AI agents are a big part of how I work, and I build my own tools with Claude Code. Honestly, nothing drives me more.</p>
-  </div>
-</section>
+
 
 <section class="band occupation">
   <div class="wrap">
     <p class="kicker occ-kicker">My last occupation</p>
     <h2><span class="occ-lead">Not only products.</span><br>I also run a business at scale.</h2>
-    <h3 class="occ-role">Head of the LatAm business unit at Algonova</h3><p class="occ-sub">EdTech, kids&#x27; coding · 5 countries.</p>
+    <h3 class="occ-role"><a href="https://algonova.com/" target="_blank" rel="noopener">Head of the LatAm business unit at Algonova ↗</a></h3><p class="occ-sub">EdTech, kids&#x27; coding · 5 countries.</p>
     <div class="occ-facts"><div class="occ-fact"><small>01</small><b>~$2M</b><span>yearly P&amp;L I owned</span></div><div class="occ-fact"><small>02</small><b>200+</b><span>people in the unit</span></div></div><p class="occ-note">I know how to run a business, not just a product.</p>
   </div>
 </section>
